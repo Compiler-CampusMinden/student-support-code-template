@@ -18,7 +18,7 @@ für einige Übungsblätter.
 [IntelliJ](https://www.jetbrains.com/idea/). Achten Sie dabei darauf, dass Sie als "Build
 Model" entsprechend "Gradle" auswählen, damit die Konfiguration übernommen wird.
 
-Sie benötigen ein installiertes [Java SE Development Kit 21 LTS](https://jdk.java.net/21/).
+Sie benötigen ein installiertes [Java SE Development Kit **25 LTS**](https://jdk.java.net/25/).
 Achten Sie darauf, dass dieses auch wirklich von IntelliJ verwendet wird (zu finden unter
 Projekt-Einstellungen).
 
