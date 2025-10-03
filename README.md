@@ -20,7 +20,7 @@ Model" entsprechend "Gradle" auswählen, damit die Konfiguration übernommen wir
 
 Sie benötigen ein installiertes [Java SE Development Kit **25 LTS**](https://jdk.java.net/25/).
 Achten Sie darauf, dass dieses auch wirklich von IntelliJ verwendet wird (zu finden unter
-Projekt-Einstellungen).
+*Projekt-Einstellungen*).
 
 Weitere Software ist nicht notwendig. ANTLR und JUnit werden über das Build-Skript automatisch
 als Dependency heruntergeladen und eingebunden. Es empfiehlt sich dennoch, zusätzlich das
@@ -70,6 +70,14 @@ hineingenerieren lassen.
 
 Wenn Sie die Grammatik einzeln übersetzen wollen, können Sie dies mit
 `./gradlew generateGrammarSource` tun.
+
+**Hinweis**: Sie werden in Ihrem eigenen Code Abhängigkeiten zu (bzw. Importe von) generierten
+Klassen haben. IntelliJ wird deshalb beim Start entsprechende Fehler anzeigen - die
+generierten Klassen existieren ja in einem frischen Projekt noch nicht! Diese werden erst beim
+Build (`./gradlew build`) bzw. beim expliziten Aufruf von `./gradlew generateGrammarSource`
+erzeugt. Danach sind dann auch die Fehlermeldungen weg ... Bei einem `./gradlew clean` werden
+auch die generierten Sourcen mit entfernt, weshalb es danach bis zum ersten Build oder Run
+wieder Fehlermeldung bzgl. der ANTLR-Dateien gibt.
 
 ## License
 
