@@ -1,4 +1,10 @@
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import my.pkg.*;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -9,7 +15,7 @@ public class Main {
     return "Hello World!";
   }
 
-  public static void main(String... args) throws IOException {
+  public static void main(String... args) throws IOException, URISyntaxException {
     System.out.println(new Main().getGreeting());
 
     String input = "2 + 8 * 2;";
@@ -29,5 +35,18 @@ public class Main {
 
     ParseTree tree2 = parser2.start(); // Start-Regel
     System.out.println(tree2.toStringTree(parser2));
+
+    // Einlesen über den Classpath
+    try (InputStream in = Main.class.getResourceAsStream("/cpp/vars.cpp")) {
+      String text = new String(in.readAllBytes(), StandardCharsets.UTF_8);
+      System.out.println("\n\n/cpp/vars.cpp");
+      System.out.println(text);
+    }
+
+    // Einlesen über Dateisystem
+    URL url = Main.class.getResource("/cpp/expr.cpp");
+    String txt = Files.readString(Path.of(url.toURI()), StandardCharsets.UTF_8);
+    System.out.println("\n\n/cpp/expr.cpp");
+    System.out.println(txt);
   }
 }
