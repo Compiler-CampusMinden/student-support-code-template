@@ -11,42 +11,32 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 public class Main {
-  public String getGreeting() {
-    return "Hello World!";
-  }
+  static void main(String... args) throws IOException, URISyntaxException {
+    IO.println("Hello World!");
 
-  public static void main(String... args) throws IOException, URISyntaxException {
-    System.out.println(new Main().getGreeting());
-
-    String input = "2 + 8 * 2;";
+    // Einlesen über Konsole/Prompt
+    String input = IO.readln("expr?> ");
 
     HelloLexer lexer = new HelloLexer(CharStreams.fromString(input));
     CommonTokenStream tokens = new CommonTokenStream(lexer);
     HelloParser parser = new HelloParser(tokens);
 
     ParseTree tree = parser.start(); // Start-Regel
-    System.out.println(tree.toStringTree(parser));
-
-    String input2 = "42 * 8 + 2;";
-
-    HelloPackageLexer lexer2 = new HelloPackageLexer(CharStreams.fromString(input2));
-    CommonTokenStream tokens2 = new CommonTokenStream(lexer2);
-    HelloPackageParser parser2 = new HelloPackageParser(tokens2);
-
-    ParseTree tree2 = parser2.start(); // Start-Regel
-    System.out.println(tree2.toStringTree(parser2));
+    IO.println(tree.toStringTree(parser));
 
     // Einlesen über den Classpath
+    IO.readln("enter?> ");
     try (InputStream in = Main.class.getResourceAsStream("/cpp/vars.cpp")) {
       String text = new String(in.readAllBytes(), StandardCharsets.UTF_8);
-      System.out.println("\n\n/cpp/vars.cpp");
-      System.out.println(text);
+      IO.println("\n\n/cpp/vars.cpp");
+      IO.println(text);
     }
 
     // Einlesen über Dateisystem
+    IO.readln("enter?> ");
     URL url = Main.class.getResource("/cpp/expr.cpp");
     String txt = Files.readString(Path.of(url.toURI()), StandardCharsets.UTF_8);
-    System.out.println("\n\n/cpp/expr.cpp");
-    System.out.println(txt);
+    IO.println("\n\n/cpp/expr.cpp");
+    IO.println(txt);
   }
 }
