@@ -18,7 +18,7 @@ public class Visitor {
     ParseTree tree = parser.start();
 
     MyVisitor eval = new MyVisitor();
-    eval.visit(tree);
+    IO.println(eval.visit(tree));
   }
 
   static class MyVisitor extends MyLangBaseVisitor<Integer> {
@@ -35,6 +35,11 @@ public class Visitor {
     public Integer visitNumber(MyLangParser.NumberContext ctx) {
       IO.println("visitNumber: NUM=" + ctx.NUM().getText());
       return Integer.parseInt(ctx.NUM().getText());
+    }
+
+    // thx, antlr! *grml*
+    protected Integer aggregateResult(Integer agg, Integer next) {
+      return next != null ? next : agg;
     }
   }
 }

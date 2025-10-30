@@ -1,3 +1,4 @@
+import java.util.Stack;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -21,19 +22,25 @@ public class Listener {
     ParseTreeWalker walker = new ParseTreeWalker();
     MyListener eval = new MyListener();
     walker.walk(eval, tree);
+    IO.println(eval.erg.peek());
   }
 
   static class MyListener extends MyLangBaseListener {
+    public Stack<Integer> erg = new Stack<>();
+
     public void exitMul(MyLangParser.MulContext ctx) {
       IO.println("exitMul: lhs=" + ctx.lhs.getText() + ", rhs=" + ctx.rhs.getText());
+      erg.push(erg.pop() * erg.pop());
     }
 
     public void exitAdd(MyLangParser.AddContext ctx) {
       IO.println("exitAdd:  lhs=" + ctx.lhs.getText() + ", rhs=" + ctx.rhs.getText());
+      erg.push(erg.pop() + erg.pop());
     }
 
     public void exitNumber(MyLangParser.NumberContext ctx) {
       IO.println("exitNumber: NUM=" + ctx.NUM().getText());
+      erg.push(Integer.parseInt(ctx.NUM().getText()));
     }
   }
 }
