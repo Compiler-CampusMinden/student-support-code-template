@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 
@@ -11,12 +12,11 @@ public class AstBuilder {
     // _ExprLine + A_1 * bB_2 + cc3 * 7 +      11;
     // 2+3*4;
 
-    IO.println("Hello World!");
-    String input = IO.readln("expr?> ");
-
-    MyLangLexer lexer = new MyLangLexer(CharStreams.fromString(input));
+    CharStream input = CharStreams.fromString(IO.readln("expr?> "));
+    MyLangLexer lexer = new MyLangLexer(input);
     CommonTokenStream tokens = new CommonTokenStream(lexer);
     MyLangParser parser = new MyLangParser(tokens);
+
     MyLangParser.StartContext tree = parser.start();
 
     IO.println(toAst(tree));

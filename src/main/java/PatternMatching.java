@@ -1,25 +1,22 @@
+import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 
 public class PatternMatching {
-  static Integer result;
-
   static void main(String... args) {
     // result99 = acc_2*ACC_2 + spillover7 + bonus_1*3 + inc_0;
     // calc_42 = __9 * zZ_1 + 5 + FooBar_42 * bar_7 + q0;
     // _ExprLine + A_1 * bB_2 + cc3 * 7 +      11;
     // 2+3*4;
 
-    IO.println("Hello World!");
-    String input = IO.readln("expr?> ");
-
-    MyLangLexer lexer = new MyLangLexer(CharStreams.fromString(input));
+    CharStream input = CharStreams.fromString(IO.readln("expr?> "));
+    MyLangLexer lexer = new MyLangLexer(input);
     CommonTokenStream tokens = new CommonTokenStream(lexer);
     MyLangParser parser = new MyLangParser(tokens);
+
     MyLangParser.StartContext tree = parser.start();
 
     exec(tree);
-    IO.println(result);
   }
 
   static void exec(MyLangParser.StartContext start) {
@@ -27,7 +24,7 @@ public class PatternMatching {
       switch (s) {
         case MyLangParser.ExprStmtContext e -> {
           IO.println("Stmt.ExprStmt: expr=" + e.expr().getText());
-          result = eval(e.expr());
+          IO.println(eval(e.expr()));
         }
         default ->
             throw new IllegalStateException("Unhandled stmt: " + s.getClass().getSimpleName());

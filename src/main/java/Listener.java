@@ -1,4 +1,5 @@
 import java.util.Stack;
+import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -11,17 +12,17 @@ public class Listener {
     // _ExprLine + A_1 * bB_2 + cc3 * 7 +      11;
     // 2+3*4;
 
-    IO.println("Hello World!");
-    String input = IO.readln("expr?> ");
-
-    MyLangLexer lexer = new MyLangLexer(CharStreams.fromString(input));
+    CharStream input = CharStreams.fromString(IO.readln("expr?> "));
+    MyLangLexer lexer = new MyLangLexer(input);
     CommonTokenStream tokens = new CommonTokenStream(lexer);
     MyLangParser parser = new MyLangParser(tokens);
+
     ParseTree tree = parser.start();
 
     ParseTreeWalker walker = new ParseTreeWalker();
     MyListener eval = new MyListener();
     walker.walk(eval, tree);
+
     IO.println(eval.erg.peek());
   }
 
