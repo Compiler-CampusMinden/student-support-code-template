@@ -71,13 +71,31 @@ hineingenerieren lassen.
 Wenn Sie die Grammatik einzeln übersetzen wollen, können Sie dies mit
 `./gradlew generateGrammarSource` tun.
 
-**Hinweis**: Sie werden in Ihrem eigenen Code Abhängigkeiten zu (bzw. Importe von) generierten
-Klassen haben. IntelliJ wird deshalb beim Start entsprechende Fehler anzeigen - die
-generierten Klassen existieren ja in einem frischen Projekt noch nicht! Diese werden erst beim
-Build (`./gradlew build`) bzw. beim expliziten Aufruf von `./gradlew generateGrammarSource`
-erzeugt. Danach sind dann auch die Fehlermeldungen weg ... Bei einem `./gradlew clean` werden
-auch die generierten Sourcen mit entfernt, weshalb es danach bis zum ersten Build oder Run
-wieder Fehlermeldung bzgl. der ANTLR-Dateien gibt.
+> [!TIP]
+> **Hinweis**: Sie werden in Ihrem eigenen Code Abhängigkeiten zu (bzw. Importe von)
+> generierten Klassen haben. IntelliJ wird deshalb beim Start entsprechende Fehler anzeigen -
+> die generierten Klassen existieren ja in einem frischen Projekt noch nicht! Diese werden
+> erst beim Build (`./gradlew build`) bzw. beim expliziten Aufruf von
+> `./gradlew generateGrammarSource` erzeugt. Danach sind dann auch die Fehlermeldungen weg ...
+> Bei einem `./gradlew clean` werden auch die generierten Sourcen mit entfernt, weshalb es
+> danach bis zum ersten Build oder Run wieder Fehlermeldung bzgl. der ANTLR-Dateien gibt.
+
+> [!IMPORTANT]
+> **Hinweis**: Sorgen Sie dafür, dass Ihre IDE tatsächlich auch die Projekteinstellungen von
+> Gradle übernommen hat und auch mit Gradle baut!
+>
+> Check, ob die **Projekteinstellungen** in IntelliJ passen:
+> 1. Menü `File > Project Structure > Project Settings > Project` sollte für Ihr Projekt als
+> SDK ein "Java 25" zeigen: ![](img/ij-projectsettings-sdk.png)
+> 2. Menü `File > Project Structure > Project Settings > Libraries` sollte für Ihr Projekt
+> Jar-Files für ANTLR4 zeigen: ![](img/ij-projectsettings-libs.png)
+>
+> Check, ob **IntelliJ mit Gradle baut**:
+> Menü `File > Settings > Build, Execution, Deployment > Build Tools > Gradle` sollte auf
+> Gradle umgestellt sein: ![](img/ij-setting-gradlebuild.png)
+> Unter "Build & Run" sollte "Gradle" ausgewählt sein, die "Distribution" sollte auf "Wrapper"
+> stehen, und als "Gradle JVM" sollte die für das Projekt verwendete JVM eingestellt sein,
+> d.h. aktuell Java 25.
 
 ## License
 

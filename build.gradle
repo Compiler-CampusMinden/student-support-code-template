@@ -3,6 +3,7 @@ plugins {
     id 'application'
     id 'com.diffplug.spotless' version '8.0.0'
     id 'antlr'
+    id 'idea'
 }
 
 repositories {
@@ -23,9 +24,31 @@ java.targetCompatibility = JavaVersion.VERSION_25
 
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
+// ANTLR and IntelliJ
+def antlrGenDir = layout.buildDirectory.dir('generated-src/antlr/main')
+
+sourceSets {
+    main {
+        java {
+            srcDir antlrGenDir
+        }
+    }
+}
+
 generateGrammarSource {
     maxHeapSize = '64m'
     arguments += ['-visitor', '-listener', '-long-messages']
+    outputDirectory = antlrGenDir.get().asFile
+}
+
+idea {
+    module {
+        generatedSourceDirs += antlrGenDir.get().asFile
+    }
+}
+
+tasks.named('compileJava') {
+    dependsOn tasks.named('generateGrammarSource')
 }
 
 
