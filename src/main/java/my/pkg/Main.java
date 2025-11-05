@@ -1,43 +1,22 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import my.pkg.HelloPackageLexer;
+package my.pkg;
+
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 public class Main {
-  static void main(String... args) throws IOException, URISyntaxException {
+  static void main(String... args) {
     IO.println("Hello World!");
 
     // Einlesen über Konsole/Prompt
     String input = IO.readln("expr?> ");
 
-    // HelloLexer lexer = new HelloLexer(CharStreams.fromString(input));
+    // Demonstriert den Einsatz von Packages und Grammatiken
     HelloPackageLexer lexer = new HelloPackageLexer(CharStreams.fromString(input));
     CommonTokenStream tokens = new CommonTokenStream(lexer);
-    HelloParser parser = new HelloParser(tokens);
+    HelloPackageParser parser = new HelloPackageParser(tokens);
 
     ParseTree tree = parser.start(); // Start-Regel
     IO.println(tree.toStringTree(parser));
-
-    // Einlesen über den Classpath
-    IO.readln("enter?> ");
-    try (InputStream in = Main.class.getResourceAsStream("/cpp/vars.cpp")) {
-      String text = new String(in.readAllBytes(), StandardCharsets.UTF_8);
-      IO.println("\n\n/cpp/vars.cpp");
-      IO.println(text);
-    }
-
-    // Einlesen über Dateisystem
-    IO.readln("enter?> ");
-    URL url = Main.class.getResource("/cpp/expr.cpp");
-    String txt = Files.readString(Path.of(url.toURI()), StandardCharsets.UTF_8);
-    IO.println("\n\n/cpp/expr.cpp");
-    IO.println(txt);
   }
 }

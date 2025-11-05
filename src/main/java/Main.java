@@ -5,7 +5,6 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import my.pkg.*;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -25,7 +24,7 @@ public class Main {
     IO.println(tree.toStringTree(parser));
 
     // Einlesen über den Classpath
-    IO.readln("enter?> ");
+    IO.readln("next?> ");
     try (InputStream in = Main.class.getResourceAsStream("/cpp/vars.cpp")) {
       String text = new String(in.readAllBytes(), StandardCharsets.UTF_8);
       IO.println("\n\n/cpp/vars.cpp");
@@ -33,7 +32,7 @@ public class Main {
     }
 
     // Einlesen über Dateisystem
-    IO.readln("enter?> ");
+    IO.readln("next?> ");
     URL url = Main.class.getResource("/cpp/expr.cpp");
     String txt = Files.readString(Path.of(url.toURI()), StandardCharsets.UTF_8);
     IO.println("\n\n/cpp/expr.cpp");
