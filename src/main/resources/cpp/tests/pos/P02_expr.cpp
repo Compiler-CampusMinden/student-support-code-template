@@ -1,8 +1,6 @@
-/*
- * Einfache Testfälle für Ausdrücke und Zuweisungen in C++
- *
- */
-
+void print_int(int);
+void print_bool(bool);
+void print_char(char);
 
 int main() {
     // Einfache Ausdrücke
@@ -29,10 +27,18 @@ int main() {
     print_int(x);   // 9
     print_int(y);   // 7
 
-
-    // nicht erlaubte Zuweisungen
-//    9 = x;
-
-
     return 0;
 }
+/* EXPECT:
+1
+3
+-1
+11
+11
+5
+7
+42
+49
+9
+7
+*/

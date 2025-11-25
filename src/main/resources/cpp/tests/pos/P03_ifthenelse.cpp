@@ -1,8 +1,6 @@
-/*
- * Einfache Testfälle für Kontrollfluss (if-then-else) in C++
- *
- */
-
+void print_int(int);
+void print_bool(bool);
+void print_char(char);
 
 int main() {
     // if-then-else
@@ -41,6 +39,16 @@ int main() {
         print_char('y');        // y
     }
 
-
     return 0;
 }
+/* EXPECT:
+1
+1
+7
+1
+2
+7
+2
+1
+y
+*/

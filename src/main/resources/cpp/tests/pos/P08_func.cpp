@@ -1,7 +1,6 @@
-/*
- * Einfache Testfälle für Funktionen und Rekursion in C++
- *
- */
+void print_int(int);
+void print_bool(bool);
+void print_char(char);
 
 
 void foo() {
@@ -111,16 +110,45 @@ int main() {
     print_int(mc91(200));   // 190
     print_int(mc91(300));   // 290
 
-
-    // diese Aufrufe dürfen nicht gehen
-//    fluppie(1, 2, 3, h);
-//    foobar(1, 2, 3, 8);
-
-
     return 0;
 }
-
 
 void bar() {
     print_char('b');    // 'b'
 }
+/* EXPECT:
+f
+b
+w
+7
+99
+7
+99
+f
+7
+99
+99
+99
+f
+1
+2
+3
+7
+99
+6
+w
+11
+99
+1
+1
+5
+977
+91
+91
+91
+91
+91
+91
+190
+290
+*/

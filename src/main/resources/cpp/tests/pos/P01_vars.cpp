@@ -1,8 +1,6 @@
-/*
- * Einfache Testfälle für Variablen in C++
- *
- */
-
+void print_int(int);
+void print_bool(bool);
+void print_char(char);
 
 int main() {
     // Variablen mit Basisdatentypen (ohne Initialisierung)
@@ -10,9 +8,13 @@ int main() {
     int b;
     char c;
 
-    print_bool(a);  // ?? (nicht initialisiert)
-    print_int(b);   // ?? (nicht initialisiert)
-    print_char(c);  // ?? (nicht initialisiert)
+    a = false;
+    b = 7;
+    c = 'a';
+
+    print_bool(a);  // false
+    print_int(b);   // 7
+    print_char(c);  // 'a'
 
 
     // Variablen mit Basisdatentypen (mit Initialisierung)
@@ -24,12 +26,13 @@ int main() {
     print_int(bb);   // 42
     print_char(cc);  // 'c'
 
-
-    // Re-Definition darf nicht akzeptiert werden
-//    bool aa = false;
-//    int bb = 7;
-//    char cc = 'x';
-
-
     return 0;
 }
+/* EXPECT:
+0
+7
+a
+1
+42
+c
+*/

@@ -1,7 +1,6 @@
-/*
- * Einfache Testfälle für statische und dynamische Polymorphie in C++
- *
- */
+void print_int(int);
+void print_bool(bool);
+void print_char(char);
 
 
 class A {
@@ -43,47 +42,11 @@ public:     // es reicht, wenn alles public ist (hier nur, damit das Beispiel mi
 
 
 int main() {
-    {
-        // Statische Polymorphie (Normalfall)
-        print_char(' '); print_char('A'); print_char(' ');  // 'A'
+    // Statische Polymorphie (Normalfall)
+    B b(9);
+    A a = b;
 
-        B b(9);
-        A a = b;
-
-        b.foo();    // B, f, 99, 9
-        b.bar();    // B, b, 99, 9
-
-        a.foo();    // A, f, 99         => statische Polymorphie
-//        a.bar();    // nicht erlaubt!
-    }
-
-    {
-        // Statische Polymorphie (trotz Basisklassenreferenz)
-        print_char(' '); print_char('B'); print_char(' ');  // 'B'
-
-        B b(9);
-        A &a = b;
-
-        b.foo();    // B, f, 99, 9
-        b.bar();    // B, b, 99, 9
-
-        a.foo();    // A, f, 99         => statische Polymorphie
-    }
-
-    {
-        // Dynamische Polymorphie (Basisklassenreferenz und virtuelle Methode)
-        print_char(' '); print_char('C'); print_char(' ');  // 'C'
-
-        C c(9);
-        B &b = c;
-
-        c.foo();    // C, f, 99, 77, 9
-        c.bar();    // C, b, 99, 77, 9
-
-        b.foo();    // C, f, 99, 77, 9      => dynamische Polymorphie
-        b.bar();    // B, b, 99, 77         => statische Polymorphie
-    }
-
+    a.bar();    // nicht erlaubt!
 
     return 0;
 }

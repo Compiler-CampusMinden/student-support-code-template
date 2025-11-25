@@ -1,7 +1,6 @@
-/*
- * Einfache Testfälle für Einfach-Vererbung in C++
- *
- */
+void print_int(int);
+void print_bool(bool);
+void print_char(char);
 
 
 class A {
@@ -44,6 +43,29 @@ int main() {
     y.foo();    // B, f, 99, 4
     y.bar();    // B, b, 99, 4
 
-
     return 0;
 }
+/* EXPECT:
+A
+f
+2
+B
+f
+99
+7
+B
+b
+99
+7
+A
+f
+8
+B
+f
+99
+4
+B
+b
+99
+4
+*/

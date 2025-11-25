@@ -1,8 +1,6 @@
-/*
- * Einfache Testfälle für Kontrollfluss (while) in C++
- *
- */
-
+void print_int(int);
+void print_bool(bool);
+void print_char(char);
 
 int main() {
     // simple while-loop
@@ -25,6 +23,13 @@ int main() {
     print_int(arr[3]);  // 4
     print_int(arr[4]);  // 5
 
-
     return 0;
 }
+/* EXPECT:
+1
+1
+2
+3
+4
+5
+*/
