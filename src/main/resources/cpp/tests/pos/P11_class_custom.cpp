@@ -8,9 +8,9 @@ public:     // es reicht, wenn alles public ist (hier nur, damit das Beispiel mi
     B() { value = 0; }
     B(int x) { value = x; }
     B(B& rhs) { value = rhs.value; }
-    B& operator=(B& rhs) {  // Zuweisung ist der einzige notwendige Operator
+    B assign(B& rhs) {  // Zuweisung ist der einzige notwendige Operator
         value = rhs.value;
-        return *this;       // "this" und "*this" sollen im Klassenkontext erkannt werden
+        return *this;       // "*this" soll im Klassenkontext erkannt werden
     }
 
     int value;
@@ -39,7 +39,7 @@ int main() {
     print_int(z.value);     // 7
 
     B foo;
-    foo = z;
+    foo.assign(z);
     z.value = 99;
     print_int(foo.value);   // 7
     print_int(z.value);     // 99
