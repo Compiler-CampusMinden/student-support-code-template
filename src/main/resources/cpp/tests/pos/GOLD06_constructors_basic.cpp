@@ -20,11 +20,11 @@ int main() {
   Point p;            // Default-Konstruktor
   print_int(p.sum()); // 0
 
-  Point q(3, 4);      // Parametrisierter Konstruktor
-  print_int(q.sum()); // 7
+  Point q = Point(3, 4); // Parametrisierter Konstruktor
+  print_int(q.sum());    // 7
 
   // Konstruktions-Initialisierung bei lokaler Deklaration (zugelassen, da nicht-leere Arg-Liste)
-  Point r(10, -2);
+  Point r = Point(10, -2);
   print_int(r.sum()); // 8
 
   return 0;

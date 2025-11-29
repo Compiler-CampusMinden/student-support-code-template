@@ -45,7 +45,7 @@ int main() {
     // Statische Polymorphie (trotz Basisklassenreferenz)
     print_char('B');  // 'B'
 
-    B b(9);
+    B b = B(9);
     A &a = b;
 
     b.foo();    // B, f, 99, 9

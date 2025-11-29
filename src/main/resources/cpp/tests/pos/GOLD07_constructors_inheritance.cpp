@@ -26,7 +26,7 @@ int main() {
   print_int(d.f());      // 2 + 5 = 7
   print_int(d.g());      // g() aus Base am statischen Typ Der -> nicht virtuell -> 3
 
-  Der e(10, 4);          // nutzt Der(int,int)
+  Der e = Der(10, 4);    // nutzt Der(int,int)
   Base& rb = e;          // Referenz auf Basistyp
   print_int(rb.f());     // dynamisch -> Der::f -> 14
   print_int(rb.g());     // statisch -> Base::g -> 11

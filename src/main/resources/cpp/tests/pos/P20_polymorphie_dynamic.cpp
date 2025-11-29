@@ -45,7 +45,7 @@ int main() {
     // Dynamische Polymorphie (Basisklassenreferenz und virtuelle Methode)
     print_char('C');  // 'C'
 
-    C c(9);
+    C c = C(9);
     B &b = c;
 
     c.foo();    // C, f, 99, 77, 9

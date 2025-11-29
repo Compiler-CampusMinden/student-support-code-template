@@ -10,7 +10,7 @@ public:
 };
 
 int main() {
-    P p(3);
+    P p = P(3);
     print_int(p.v); // 3
     p.set(8);
     print_int(p.v); // 8

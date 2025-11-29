@@ -20,7 +20,7 @@ int main() {
     x.value = 9;
     print_int(x.value);     // 9
 
-    C y(x);
+    C y = C(x);
     print_int(x.value);     // 9
     print_int(y.value);     // 9
 

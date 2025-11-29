@@ -29,8 +29,8 @@ public:     // es reicht, wenn alles public ist (hier nur, damit das Beispiel mi
 
 int main() {
     // Vererbung: Initialisierung Basisklasse; Überschreiben von Methoden
-    A x(2);
-    B y(7);
+    A x = A(2);
+    B y = B(7);
 
     x.foo();    // A, f, 2
     y.foo();    // B, f, 99, 7

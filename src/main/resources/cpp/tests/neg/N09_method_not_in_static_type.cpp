@@ -1,4 +1,4 @@
-class A { };
+class A { public: };
 
 int main() {
     A a;

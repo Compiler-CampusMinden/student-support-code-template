@@ -17,7 +17,7 @@ int main() {
     x.value = 9;
     print_int(x.value);     // 9
 
-    A y(x);
+    A y = A(x);
     print_int(x.value);     // 9
     print_int(y.value);     // 9
 

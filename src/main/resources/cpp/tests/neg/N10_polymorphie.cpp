@@ -43,7 +43,7 @@ public:     // es reicht, wenn alles public ist (hier nur, damit das Beispiel mi
 
 int main() {
     // Statische Polymorphie (Normalfall)
-    B b(9);
+    B b = B(9);
     A a = b;
 
     a.bar();    // nicht erlaubt!

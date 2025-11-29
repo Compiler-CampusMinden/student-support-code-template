@@ -15,7 +15,7 @@ public:
 };
 
 int main() {
-    Counter c(1);
+    Counter c = Counter(1);
     int step = 2;
     Counter c2 = c.add(step).add(step); // n: 1->3->6, step: 2->3->6
     c.print();       // 3

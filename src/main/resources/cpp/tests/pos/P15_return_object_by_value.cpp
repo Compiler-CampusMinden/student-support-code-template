@@ -12,7 +12,7 @@ public:
 };
 
 Box makeBox(int x) {
-    Box b(x);
+    Box b = Box(x);
     return b; // Copy bei Return
 }
 
