@@ -1,4 +1,4 @@
-void f(int) { }
+void f(int  r) { }
 void f(int& r) { }
 
 int main() {
