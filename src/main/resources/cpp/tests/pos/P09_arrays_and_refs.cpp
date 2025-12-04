@@ -1,6 +1,4 @@
-void print_int(int);
-void print_bool(bool);
-void print_char(char);
+#include "hsbi_runtime.h"
 
 void inc(int &v) { v = v + 1; }
 

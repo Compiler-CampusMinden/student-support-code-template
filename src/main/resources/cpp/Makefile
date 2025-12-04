@@ -8,7 +8,7 @@
 #
 # Voraussetzungen:
 #   - Tests liegen unter tests/pos/*.cpp und tests/neg/*.cpp
-#   - Runtime liegt unter runtime/hsbi_runtime.cpp
+#   - Runtime liegt unter runtime/hsbi_runtime.h
 #   - Positivtests enthalten am Dateiende einen Block:
 #       /*
 #        * EXPECT:
@@ -19,9 +19,7 @@
 #   CXX kann auf clang++ gesetzt werden (z. B. `make CXX=clang++`)
 
 CXX      ?= g++
-CXXFLAGS ?= -std=c++17 -O2 -Wall -Wextra -pedantic-errors
-
-RUNTIME   := runtime/hsbi_runtime.cpp
+CXXFLAGS ?= -std=c++17 -O2 -Wall -Wextra -pedantic-errors -I runtime/
 
 POS_SRCS  := $(wildcard tests/pos/*.cpp)
 NEG_SRCS  := $(wildcard tests/neg/*.cpp)
@@ -42,10 +40,10 @@ pos: $(addprefix $(POS_BUILD)/, $(POS_NAMES:%=%._ok))
 
 neg: $(addprefix $(NEG_BUILD)/, $(NEG_NAMES:%=%._ok))
 
-$(POS_BUILD)/%._ok: tests/pos/%.cpp $(RUNTIME)
+$(POS_BUILD)/%._ok: tests/pos/%.cpp
 	@mkdir -p $(POS_BUILD) $(EXP_DIR)
 	@echo "==> POS $*"
-	$(CXX) $(CXXFLAGS) $< $(RUNTIME) -o $(POS_BUILD)/$*
+	$(CXX) $(CXXFLAGS) $< -o $(POS_BUILD)/$*
 	@awk '/\/\* *EXPECT/{flag=1; next} /\*\//{if(flag){exit}} flag{print}' $< > $(EXP_DIR)/$*.out
 	@$(POS_BUILD)/$* > $(POS_BUILD)/$*.out
 	@diff -u $(EXP_DIR)/$*.out $(POS_BUILD)/$*.out && echo "[OK] $*" || (echo "[FAIL] $*"; exit 1)

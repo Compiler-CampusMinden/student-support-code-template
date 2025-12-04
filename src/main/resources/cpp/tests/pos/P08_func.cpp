@@ -1,7 +1,4 @@
-void print_int(int);
-void print_bool(bool);
-void print_char(char);
-
+#include "hsbi_runtime.h"
 
 void foo() {
     print_char('f');    // 'f'

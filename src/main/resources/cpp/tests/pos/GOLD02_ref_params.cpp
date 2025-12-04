@@ -1,6 +1,4 @@
-void print_int(int);
-void print_bool(bool);
-void print_char(char);
+#include "hsbi_runtime.h"
 
 int inc(int& r) { r = r + 1; return r; }
 void swap2(int& a, int& b) { int t = a; a = b; b = t; }

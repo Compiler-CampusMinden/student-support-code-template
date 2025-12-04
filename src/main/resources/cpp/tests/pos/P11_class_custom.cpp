@@ -1,7 +1,4 @@
-void print_int(int);
-void print_bool(bool);
-void print_char(char);
-
+#include "hsbi_runtime.h"
 
 class B {
 public:     // es reicht, wenn alles public ist (hier nur, damit das Beispiel mit g++ kompiliert)
