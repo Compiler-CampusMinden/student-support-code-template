@@ -13,6 +13,9 @@ int main() {
   char ch = 'A';
   print_char(ch);            // A
 
+  string str = "foo";        // foo
+  print_string(str);
+
   // while + if
   int s = 0;
   int i = 0;
@@ -28,5 +31,6 @@ int main() {
 12
 0
 A
+foo
 2
 */

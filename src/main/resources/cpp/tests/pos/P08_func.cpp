@@ -4,7 +4,9 @@ void foo() {
     print_char('f');    // 'f'
 }
 
-void bar();
+void bar() {
+    print_char('b');    // 'b'
+}
 
 int wuppie(int x) {
     print_char('w');    // 'w'
@@ -108,10 +110,6 @@ int main() {
     print_int(mc91(300));   // 290
 
     return 0;
-}
-
-void bar() {
-    print_char('b');    // 'b'
 }
 /* EXPECT:
 f
