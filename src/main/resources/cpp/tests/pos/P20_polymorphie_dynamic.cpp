@@ -48,8 +48,11 @@ int main() {
     c.foo();    // C, f, 99, 77, 9
     c.bar();    // C, b, 99, 77, 9
 
-    b.foo();    // C, f, 99, 77, 9      => dynamische Polymorphie
-    b.bar();    // B, b, 99, 77         => statische Polymorphie
+    b.foo();    // C, f, 99, 77, 9      => dynamische Polymorphie (Referenz genutzt, virtual in B)
+    b.bar();    // B, b, 99, 77         => statische Polymorphie (Referenz genutzt, aber nicht virtual in B)
+
+    B bb = c;
+    bb.foo();    // B, f, 99, 77        => statische Polymorphie (keine Referenz genutzt, virtual in B)
 
     return 0;
 }
@@ -72,6 +75,10 @@ f
 9
 B
 b
+99
+77
+B
+f
 99
 77
 */
