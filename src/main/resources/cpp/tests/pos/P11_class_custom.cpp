@@ -4,7 +4,6 @@ class B {
 public:     // es reicht, wenn alles public ist (hier nur, damit das Beispiel mit g++ kompiliert)
     B() { value = 0; }
     B(int x) { value = x; }
-    B(B& rhs) { value = rhs.value; }
 
     int value;
 };
