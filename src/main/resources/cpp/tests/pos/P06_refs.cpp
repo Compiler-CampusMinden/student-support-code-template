@@ -29,6 +29,15 @@ int main() {
     aaa = true;
     print_bool(a);  // 1
 
+    // Zuweisung an Referenzen
+    b = 749;
+    int x = 9;
+    bb = x;
+    x = 7;
+    print_int(bb); // 9
+    print_int(x);  // 7
+    print_int(b);  // 9
+
     return 0;
 }
 /* EXPECT:
@@ -39,4 +48,7 @@ c
 7
 x
 1
+9
+7
+9
 */
