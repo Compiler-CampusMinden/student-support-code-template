@@ -2,9 +2,13 @@
 #define HSBI_RUNTIME_H
 
 #include <iostream>
+#include <string>
 
-inline void print_int(int v)   { std::cout << v << std::endl; }
-inline void print_bool(bool v) { std::cout << (v ? 1 : 0) << std::endl; }
-inline void print_char(char v) { std::cout << v << std::endl; }
+using namespace std;
+
+inline void print_int(int v)       { cout << v << endl; }
+inline void print_bool(bool v)     { cout << (v ? 1 : 0) << endl; }
+inline void print_char(char v)     { cout << v << endl; }
+inline void print_string(string v) { cout << v << endl; }
 
 #endif // HSBI_RUNTIME_H

@@ -24,19 +24,6 @@ public:     // es reicht, wenn alles public ist (hier nur, damit das Beispiel mi
     int bval;
 };
 
-class C : public B {
-public:     // es reicht, wenn alles public ist (hier nur, damit das Beispiel mit g++ kompiliert)
-    C(int x) { cval = x; }
-
-    // überschriebene Methode aus B
-    void foo() { print_char('C'); print_char('f'); print_int(aval); print_int(bval); print_int(cval); }
-
-    // eigene Methode
-    void bar() { print_char('C'); print_char('b'); print_int(aval); print_int(bval); print_int(cval); }
-
-    int cval;
-};
-
 
 int main() {
     // Statische Polymorphie (trotz Basisklassenreferenz)
@@ -48,7 +35,7 @@ int main() {
     b.foo();    // B, f, 99, 9
     b.bar();    // B, b, 99, 9
 
-    a.foo();    // A, f, 99         => statische Polymorphie
+    a.foo();    // A, f, 99         => statische Polymorphie (Referenz genutzt, aber nicht virtual in A)
 
     return 0;
 }

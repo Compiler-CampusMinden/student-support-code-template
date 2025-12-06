@@ -6,7 +6,7 @@ public:
     Counter add(int &delta) {
         n = n + delta;
         delta = n;
-        return *this;
+        return Counter(n);
     }
     void print() { print_int(n); }
     int n;

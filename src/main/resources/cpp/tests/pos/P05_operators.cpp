@@ -10,7 +10,7 @@ int main() {
     print_bool(5 != 5);     // 0
     print_bool('a' < 'b');  // 1
 
-    // Logisch (Kurzschluss nicht notwendig)
+    // Logisch
     if (true || false) { print_char('+'); }     // +
     if (false && true) { print_char('x'); }     //
     if (false || true) { print_char('+'); }     // +
