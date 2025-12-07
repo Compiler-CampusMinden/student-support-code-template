@@ -70,7 +70,7 @@ int main() {
     // einfacher Funktionsaufruf, vorher definiert
     foo();      // 'f'
 
-    // einfacher Funktionsaufruf, Vorwärtsdeklaration
+    // einfacher Funktionsaufruf
     bar();      // 'b'
 
     // Funktionsaufruf mit Parameter
