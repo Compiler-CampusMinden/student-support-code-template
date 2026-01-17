@@ -7,7 +7,7 @@ title: Student Support Code Template
 # Compiler Sample Project
 
 Dies ist ein Starter-Projekt für die Übungsaufgaben in "Compilerbau" (Bachelor). Es existiert
-eine [Gradle-Konfiguration](build.gradle) (Java-Projekt), [JUnit](https://junit.org/junit5/)
+eine [Gradle-Konfiguration](build.gradle) (Java-Projekt), [JUnit](https://junit.org/junit6/)
 und [ANTLR](https://www.antlr.org/) sind auch bereits eingebunden. Das Projekt zeigt die
 Einbindung der ANTLR-Grammatiken. Zusätzlich existieren [Beispielgrammatiken](src/main/antlr/)
 für einige Übungsblätter.
@@ -18,9 +18,9 @@ für einige Übungsblätter.
 [IntelliJ](https://www.jetbrains.com/idea/). Achten Sie dabei darauf, dass Sie als "Build
 Model" entsprechend "Gradle" auswählen, damit die Konfiguration übernommen wird.
 
-Sie benötigen ein installiertes [Java SE Development Kit **25 LTS**](https://jdk.java.net/25/).
-Achten Sie darauf, dass dieses auch wirklich von IntelliJ verwendet wird (zu finden unter
-*Projekt-Einstellungen*).
+Sie benötigen ein installiertes [Java SE Development Kit **25
+LTS**](https://jdk.java.net/25/). Achten Sie darauf, dass dieses auch wirklich von IntelliJ
+verwendet wird (zu finden unter *Projekt-Einstellungen*).
 
 Weitere Software ist nicht notwendig. ANTLR und JUnit werden über das Build-Skript automatisch
 als Dependency heruntergeladen und eingebunden. Es empfiehlt sich dennoch, zusätzlich das
@@ -39,7 +39,7 @@ verwenden.
 
 ### Starten des Programms
 
-Konfigurieren Sie Ihr Programm im [`build.gradle`](build.gradle) in der Variablen `mainClass`.
+Konfigurieren Sie Ihr Programm im [`build.gradle`](build.gradle) in der Variable `mainClass`.
 
 Danach können Sie das Programm kompilieren und starten über `./gradlew run`.
 
@@ -85,17 +85,17 @@ Wenn Sie die Grammatik einzeln übersetzen wollen, können Sie dies mit
 > Gradle übernommen hat und auch mit Gradle baut!
 >
 > Check, ob die **Projekteinstellungen** in IntelliJ passen:
-> 1. Menü `File > Project Structure > Project Settings > Project` sollte für Ihr Projekt als
-> SDK ein "Java 25" zeigen: ![](img/ij-projectsettings-sdk.png)
-> 2. Menü `File > Project Structure > Project Settings > Libraries` sollte für Ihr Projekt
-> Jar-Files für ANTLR4 zeigen: ![](img/ij-projectsettings-libs.png)
+> 1.  Menü `File > Project Structure > Project Settings > Project` sollte für Ihr Projekt als
+>     SDK ein "Java 25" zeigen: ![](img/ij-projectsettings-sdk.png)
+> 2.  Menü `File > Project Structure > Project Settings > Libraries` sollte für Ihr Projekt
+>     Jar-Files für ANTLR4 zeigen: ![](img/ij-projectsettings-libs.png)
 >
 > Check, ob **IntelliJ mit Gradle baut**:
-> Menü `File > Settings > Build, Execution, Deployment > Build Tools > Gradle` sollte auf
-> Gradle umgestellt sein: ![](img/ij-setting-gradlebuild.png)
-> Unter "Build & Run" sollte "Gradle" ausgewählt sein, die "Distribution" sollte auf "Wrapper"
-> stehen, und als "Gradle JVM" sollte die für das Projekt verwendete JVM eingestellt sein,
-> d.h. aktuell Java 25.
+> 1.  Menü `File > Settings > Build, Execution, Deployment > Build Tools > Gradle` sollte auf
+>     Gradle umgestellt sein: ![](img/ij-setting-gradlebuild.png)
+> 2.  Unter "Build & Run" sollte "Gradle" ausgewählt sein, die "Distribution" sollte auf
+>     "Wrapper" stehen, und als "Gradle JVM" sollte die für das Projekt verwendete JVM
+>     eingestellt sein, d.h. aktuell Java 25.
 
 ## License
 
