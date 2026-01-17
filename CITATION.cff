@@ -15,7 +15,7 @@ authors:
     orcid: 'https://orcid.org/0000-0002-4230-9060'
 repository-code: >-
   https://github.com/Compiler-CampusMinden/student-support-code-template
-abstract: "This is a template repo for providing student support code (e.g.\_source code and tests) for Java based homework assignments."
+abstract: "This is a template repo for providing student support code (e.g. source code and tests) for Java based homework assignments."
 keywords:
   - java
   - antlr
