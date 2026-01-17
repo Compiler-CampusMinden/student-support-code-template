@@ -16,28 +16,34 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     antlr 'org.antlr:antlr4:4.13.2'
+    implementation 'org.antlr:antlr4-runtime:4.13.2'
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(25)  // use current Long-Term Support (LTS) release
-java.sourceCompatibility = JavaVersion.VERSION_25
-java.targetCompatibility = JavaVersion.VERSION_25
+// use current Long-Term Support (LTS) release
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
 
-[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 25
+}
+
 
 // ANTLR and IntelliJ
 def antlrGenDir = layout.buildDirectory.dir('generated-src/antlr/main')
 
 sourceSets {
     main {
-        java {
-            srcDir antlrGenDir
-        }
+        java.srcDir(antlrGenDir)
     }
 }
 
-generateGrammarSource {
+tasks.named('generateGrammarSource') {
     maxHeapSize = '64m'
-    arguments += ['-visitor', '-listener', '-long-messages']
+    arguments.addAll(['-visitor', '-listener', '-long-messages'])
     outputDirectory = antlrGenDir.get().asFile
 }
 
@@ -45,10 +51,6 @@ idea {
     module {
         generatedSourceDirs += antlrGenDir.get().asFile
     }
-}
-
-tasks.named('compileJava') {
-    dependsOn tasks.named('generateGrammarSource')
 }
 
 
@@ -62,15 +64,15 @@ tasks.named('run') {
     standardInput = System.in
 }
 
-test {
+tasks.named('test') {
     useJUnitPlatform()
 }
 
 spotless {
     java {
-        targetExclude('build/generated-src/**')
         googleJavaFormat().reflowLongStrings()
 
         target '**/*.java'
+        targetExclude('build/generated-src/**')
     }
 }
